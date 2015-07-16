@@ -2,9 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 	<meta charset="UTF-8"></meta>
-	<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>More teapots!</title>
 </head>
 <body>
-    <p>La vie est belle!</p>
+    <h1>List of teapots</h1>
+    <p th:each="teapot : ${teapots}">
+        <span th:text="${{teapot}}"></span>
+    </p>
 </body>
 </html>
