@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+    <title th:text=" ${{'Show teapot ' + teapot.name}}"></title>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+    <h1 th:text="${{'Show teapot ' + teapot.name}}"></h1>
+
+    <!-- Teapot info -->
+    <dl class="dl-horizontal">
+        <dt>Id</dt>
+        <dd th:text="${{teapot.id}}"></dd>
+
+        <dt>Name</dt>
+        <dd th:text="${{teapot.name}}"></dd>
+
+        <dt>Brand</dt>
+        <dd th:text="${{teapot.brand}}"></dd>
+
+        <dt>Volume</dt>
+        <dd th:text="${{teapot.volume + ' L'}}"></dd>
+    </dl>
+
+    <!-- Return to the list button -->
+    <a class="btn btn-default btn-lg" href="/">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Return to the list
+    </a>
+
+    <!-- Other buttons -->
+    <form class="btn-group btn-group-lg"
+        role="group"
+        method="POST"
+        th:action="@{/{id}(id=${teapot.id})}">
+
+        <!-- Edit -->
+        <a class="btn btn-default"
+            th:href="@{/{id}/edit(id=${teapot.id})}">
+            <i class="glyphicon glyphicon-edit"></i>
+            Edit
+        </a>
+
+        <!-- Delete -->
+        <input type="hidden" name="_method" value="delete"></input>
+        <button class="btn btn-danger"
+             type="submit">
+             <i class="glyphicon glyphicon-trash"></i>
+             Delete
+         </button>
+    </form>
+</body>
+</html>

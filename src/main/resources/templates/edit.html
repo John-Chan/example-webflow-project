@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+    <title th:text="${{'Edit teapot ' + teapot.name}}"></title>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+    <h1 th:text="${{'Edit teapot ' + teapot.name}}"></h1>
+
+    <!-- Edit form -->
+    <form th:action="@{/{id}(id=${teapot.id})}" method="POST" class="form-horizontal">
+
+        <!-- Id -->
+        <div class="form-group">
+            <label for="inpId" class="col-sm-2 control-label">Id</label>
+            <div class="col-sm-10">
+                <input id="inpId"
+                    name="id"
+                    type="text"
+                    class="form-control"
+                    placeholder="Id"
+                    th:value="${{teapot.id}}"></input>
+            </div>
+        </div>
+
+        <!-- Name -->
+        <div class="form-group">
+            <label for="inpName" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <input id="inpName"
+                    name="name"
+                    type="text"
+                    class="form-control"
+                    placeholder="Name"
+                    th:value="${{teapot.name}}"></input>
+            </div>
+        </div>
+
+        <!-- Brand -->
+        <div class="form-group">
+            <label for="inpBrand" class="col-sm-2 control-label">Brand</label>
+            <div class="col-sm-10">
+                <input id="inpBrand"
+                    name="brand"
+                    type="text"
+                    class="form-control"
+                    placeholder="Brand"
+                    th:value="${{teapot.brand}}"></input>
+            </div>
+        </div>
+
+        <!-- Volume -->
+        <div class="form-group">
+            <label for="inpVolume" class="col-sm-2 control-label">Volume</label>
+            <div class="col-sm-10">
+                <select id="inpVolume"
+                    name="volume"
+                    class="form-control">
+                    <option th:each="volume : ${volumes}"
+                        th:value="${{volume}}"
+                        th:text="${{volume + ' L'}}"
+                        th:selected="${teapot.volume == volume}"></option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Button "Save" -->
+        <button type="submit" class="btn btn-primary btn-lg">
+            <i class="glyphicon glyphicon-floppy-disk"></i>
+            Save
+        </button>
+
+        <!-- Button "Cancel" -->
+	    <a class="btn btn-default btn-lg" href="/">
+	        <i class="glyphicon glyphicon-remove-circle"></i>
+	        Cancel
+	    </a>
+
+        <input type="hidden" name="_method" value="put"></input>
+    </form>
+</body>
+</html>

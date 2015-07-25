@@ -9,7 +9,7 @@
     <artifactId>example-webflow-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <!-- Spring recent perositories -->
+    <!-- Spring recent repositories -->
     <repositories>
         <repository>
             <id>spring-snapshots</id>
@@ -32,6 +32,7 @@
     <properties>
         <java.version>1.8</java.version>
         <servlet-api.version>3.1.0</servlet-api.version>
+        <spring-data.version>1.4.1.RELEASE</spring-data.version>
         <webflow.version>2.4.0.RELEASE</webflow.version>
         <bootstrap.version>3.3.5</bootstrap.version>
     </properties>
@@ -49,6 +50,13 @@
             <groupId>org.springframework.webflow</groupId>
             <artifactId>spring-webflow</artifactId>
             <version>${webflow.version}</version>
+        </dependency>
+
+        <!-- Spring Data just for CrudRepository interface -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons-core</artifactId>
+            <version>${spring-data.version}</version>
         </dependency>
 
         <!-- Thymeleaf for Spring 4 -->

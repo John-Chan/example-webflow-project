@@ -1,17 +1,85 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
-	<title>More teapots!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+    <title>More teapots!</title>
 
-	<link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.css"
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
 </head>
 <body>
     <h1>List of teapots</h1>
-    <p th:each="teapot : ${teapots}">
-        <span th:text="${{teapot}}"></span>
-    </p>
+
+    <!-- Table of teapots -->
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Teapot</th>
+                <th>Brand</th>
+                <th>Volume</th>
+                <th class="text-right">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="teapot, status : ${teapots}">
+               <td th:text="${{status.count}}"></td>
+               <td th:text="${{teapot.name}}"></td>
+               <td th:text="${{teapot.brand}}"></td>
+               <td th:text="${{teapot.volume + ' L'}}"></td>
+               <td class="text-right">
+                   <form class="btn-group btn-group-md"
+                       role="group"
+                       method="POST"
+                       th:action="@{/{id}(id=${teapot.id})}">
+
+                       <!-- Search -->
+                       <a class="btn btn-default"
+                           title="Show teapot"
+                           th:href="@{/{id}(id=${teapot.id})}">
+                           <i class="glyphicon glyphicon-search"></i>
+                       </a>
+
+                       <!-- Edit -->
+                       <a class="btn btn-default"
+                           title="Edit teapot"
+                           th:href="@{/{id}/edit(id=${teapot.id})}">
+                           <i class="glyphicon glyphicon-edit"></i>
+                       </a>
+
+                       <!-- Delete -->
+                       <input type="hidden" name="_method" value="delete"></input>
+                       <button class="btn btn-danger"
+                           type="submit"
+                           title="Delete teapot">
+                           <i class="glyphicon glyphicon-trash"></i>
+                       </button>
+                   </form>
+               </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Bottom buttons -->
+    <form class="btn-group btn-group-lg"
+        role="group"
+        method="POST"
+        th:action="@{/reset}">
+
+        <!-- Create -->
+        <a class="btn btn-primary" title="Create new teapot" th:href="@{/new}">
+            <i class="glyphicon glyphicon-plus"></i>
+            New
+        </a>
+
+        <!-- Reset -->
+	    <button class="btn btn-default"
+	         type="submit"
+	         title="Reset">
+	         <i class="glyphicon glyphicon-refresh"></i>
+	         Reset
+	     </button>
+    </form>
 </body>
 </html>
