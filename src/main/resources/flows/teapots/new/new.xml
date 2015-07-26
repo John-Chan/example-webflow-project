@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+
+    <!-- Confirm license -->
+    <view-state id="acceptLicense" view="/teapots/new/acceptLicense">
+        <transition on="accept" to="newTeapotForm" />
+        <transition on="reject" to="canceled" />
+    </view-state>
+
+    <!-- New teapot form -->
+    <view-state id="newTeapotForm">
+        <transition on="submit" to="review" />
+        <transition on="cancel" to="canceled" />
+    </view-state>
+
+    <!-- Review -->
+    <view-state id="review">
+        <transition on="confirm" to="teapotCreated" />
+        <transition on="revise" to="newTeapotForm" />
+        <transition on="cancel" to="canceled" />
+    </view-state>
+
+    <!-- Teapot created end state -->
+    <end-state id="teapotCreated"></end-state>
+
+    <!-- Canceled teapot creation -->
+    <end-state id="canceled"></end-state>
+
+</flow>
