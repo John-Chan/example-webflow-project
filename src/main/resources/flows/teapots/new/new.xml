@@ -11,7 +11,7 @@
     </view-state>
 
     <!-- New teapot form -->
-    <view-state id="newTeapotForm">
+    <view-state id="newTeapotForm" view="/teapots/new/newTeapotForm">
         <transition on="submit" to="review" />
         <transition on="cancel" to="canceled" />
     </view-state>
@@ -27,6 +27,6 @@
     <end-state id="teapotCreated"></end-state>
 
     <!-- Canceled teapot creation -->
-    <end-state id="canceled"></end-state>
+    <end-state id="canceled" view="/teapots/new/canceled"></end-state>
 
 </flow>
