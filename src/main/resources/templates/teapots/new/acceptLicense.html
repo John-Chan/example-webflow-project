@@ -11,8 +11,8 @@
 <body>
     <h1>Accept license</h1>
 
-    <form>
-        <textarea>The MIT License (MIT)
+    <form method="POST">
+        <textarea class="form-control" rows="21" readonly="true">The MIT License (MIT)
 
 Copyright (c) 2015 Alexei KLENIN
 
@@ -33,6 +33,24 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.</textarea>
+
+        <!-- Button "Accept" -->
+        <button type="submit"
+            name="_eventId_accept"
+            value="accept"
+            class="btn btn-primary btn-lg">
+            <i class="glyphicon glyphicon-ok"></i>
+            Accept
+        </button>
+
+        <!-- Button "Reject" -->
+        <button type="submit"
+            name="_eventId_reject"
+            value="reject"
+            class="btn btn-primary btn-lg">
+            <i class="glyphicon glyphicon-remove"></i>
+            Reject
+        </button>
     </form>
 </body>
 </html>
