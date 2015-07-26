@@ -17,8 +17,6 @@
             <tr>
                 <th>#</th>
                 <th>Teapot</th>
-                <th>Brand</th>
-                <th>Volume</th>
                 <th class="text-right">Actions</th>
             </tr>
         </thead>
@@ -26,8 +24,6 @@
             <tr th:each="teapot, status : ${teapots}">
                <td th:text="${{status.count}}"></td>
                <td th:text="${{teapot.name}}"></td>
-               <td th:text="${{teapot.brand}}"></td>
-               <td th:text="${{teapot.volume + ' L'}}"></td>
                <td class="text-right">
                    <form class="btn-group btn-group-md"
                        role="group"
