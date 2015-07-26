@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.mvc.UrlFilenameViewController;
 import org.springframework.webflow.config.AbstractFlowConfiguration;
 import org.springframework.webflow.definition.registry.FlowDefinitionRegistry;
 import org.springframework.webflow.engine.builder.support.FlowBuilderServices;
@@ -55,10 +54,6 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
         FlowHandlerMapping mapping = new FlowHandlerMapping();
         mapping.setOrder(1);
         mapping.setFlowRegistry(registry());
-
-        /* Match the flow by requested URL */
-        mapping.setDefaultHandler(new UrlFilenameViewController());
-
         return mapping;
     }
 
