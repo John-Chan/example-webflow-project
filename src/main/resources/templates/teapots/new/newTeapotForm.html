@@ -12,7 +12,7 @@
     <h1>Creation of new teapot</h1>
 
     <!-- Edit form -->
-    <form action="/" method="POST" class="form-horizontal">
+    <form method="POST" class="form-horizontal" th:object="${teapot}">
 
         <!-- Id -->
         <div class="form-group">
@@ -22,7 +22,8 @@
                     name="id"
                     type="text"
                     class="form-control"
-                    placeholder="Id"></input>
+                    placeholder="Id"
+                    th:field="*{id}"></input>
             </div>
         </div>
 
@@ -34,7 +35,8 @@
                     name="name"
                     type="text"
                     class="form-control"
-                    placeholder="Name"></input>
+                    placeholder="Name"
+                    th:field="*{name}"></input>
             </div>
         </div>
 
@@ -46,7 +48,8 @@
                     name="brand"
                     type="text"
                     class="form-control"
-                    placeholder="Brand"></input>
+                    placeholder="Brand"
+                    th:field="*{brand}"></input>
             </div>
         </div>
 
@@ -56,7 +59,8 @@
             <div class="col-sm-10">
                 <select id="inpVolume"
                     name="volume"
-                    class="form-control">
+                    class="form-control"
+                    th:field="*{volume}">
                     <option th:each="volume : ${volumes}"
                         th:value="${{volume}}"
                         th:text="${{volume + ' L'}}"></option>
@@ -64,17 +68,23 @@
             </div>
         </div>
 
-        <!-- Button "Create" -->
-        <button type="submit" class="btn btn-primary btn-lg">
+        <!-- Button "Submit" -->
+        <button type="submit"
+            name="_eventId_submit"
+            value="submit"
+            class="btn btn-primary btn-lg">
             <i class="glyphicon glyphicon-floppy-disk"></i>
-            Create
+            Submit
         </button>
 
         <!-- Button "Cancel" -->
-        <a class="btn btn-default btn-lg" href="/">
+        <button type="submit"
+            name="_eventId_cancel"
+            value="cancel"
+            class="btn btn-lg">
             <i class="glyphicon glyphicon-remove-circle"></i>
             Cancel
-        </a>
+        </button>
     </form>
 </body>
 </html>
