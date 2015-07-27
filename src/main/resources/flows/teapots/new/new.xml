@@ -30,7 +30,7 @@
     </view-state>
 
     <!-- Review -->
-    <view-state id="review">
+    <view-state id="review" view="/teapots/new/review">
         <transition on="confirm" to="teapotCreated" />
         <transition on="revise" to="newTeapotForm" />
         <transition on="cancel" to="canceled" />
