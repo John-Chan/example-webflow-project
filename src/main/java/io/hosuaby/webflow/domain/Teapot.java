@@ -1,10 +1,17 @@
 package io.hosuaby.webflow.domain;
 
+import java.io.Serializable;
+
 
 /**
  * Just a teapot.
  */
-public class Teapot {
+public class Teapot implements Serializable {
+
+    /**
+     * Teapot must be serializable to be stored in flow scope
+     */
+    private static final long serialVersionUID = -1646247391627902236L;
 
     /** 0.3 L */
     public static final float L0_3 = (float)  0.3;
