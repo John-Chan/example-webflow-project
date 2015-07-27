@@ -12,6 +12,9 @@
 
     <!-- New teapot form -->
     <view-state id="newTeapotForm" view="/teapots/new/newTeapotForm">
+        <on-entry>
+            <set name="viewScope.volumes" value="teapotController.getVolumes()"></set>
+        </on-entry>
         <transition on="submit" to="review" />
         <transition on="cancel" to="canceled" />
     </view-state>
