@@ -165,7 +165,7 @@ public class TeapotController {
     }
 
     /**
-     * @return valid teapot volumes. Used by webflow.
+     * @return valid teapot volumes. Used by flow.
      */
     public float[] getVolumes() {
         return VOLUMES;
