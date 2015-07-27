@@ -4,6 +4,10 @@
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
 
+    <on-start>
+        <set name="flowScope.teapot" value="teapotController.getNewTeapot()"></set>
+    </on-start>
+
     <!-- Confirm license -->
     <view-state id="acceptLicense" view="/teapots/new/acceptLicense">
         <transition on="accept" to="newTeapotForm" />
@@ -11,7 +15,13 @@
     </view-state>
 
     <!-- New teapot form -->
-    <view-state id="newTeapotForm" view="/teapots/new/newTeapotForm">
+    <view-state id="newTeapotForm" model="teapot" view="/teapots/new/newTeapotForm">
+        <binder>
+            <binding property="id"></binding>
+            <binding property="name"></binding>
+            <binding property="brand"></binding>
+            <binding property="volume"></binding>
+        </binder>
         <on-entry>
             <set name="viewScope.volumes" value="teapotController.getVolumes()"></set>
         </on-entry>
