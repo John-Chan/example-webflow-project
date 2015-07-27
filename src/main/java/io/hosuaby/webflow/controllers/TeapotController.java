@@ -164,4 +164,11 @@ public class TeapotController {
         return "redirect:/";
     }
 
+    /**
+     * @return valid teapot volumes. Used by webflow.
+     */
+    public float[] getVolumes() {
+        return VOLUMES;
+    }
+
 }
