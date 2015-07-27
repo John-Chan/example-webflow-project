@@ -165,10 +165,17 @@ public class TeapotController {
     }
 
     /**
-     * @return valid teapot volumes. Used by flow.
+     * @return valid teapot volumes used by flow
      */
     public float[] getVolumes() {
         return VOLUMES;
+    }
+
+    /**
+     * @return new teapot instance used by flow
+     */
+    public Teapot getNewTeapot() {
+        return new Teapot();
     }
 
 }
