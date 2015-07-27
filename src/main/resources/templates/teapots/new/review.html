@@ -27,16 +27,20 @@
     </dl>
 
     <!-- Return to the list button -->
-    <a class="btn btn-default btn-lg" href="/">
-        <i class="glyphicon glyphicon-chevron-left"></i>
-        Return to the list
-    </a>
+    <form method="POST" style="display:inline-block">
+        <button type="submit"
+            name="_eventId_revise"
+            value="revise"
+            class="btn btn-default btn-lg">
+	        <i class="glyphicon glyphicon-chevron-left"></i>
+	        Revise
+        </button>
+    </form>
 
     <!-- Other buttons -->
     <form class="btn-group btn-group-lg"
         role="group"
-        method="POST"
-        th:action="@{/{id}(id=${teapot.id})}">
+        method="POST">
 
         <!-- Edit -->
         <a class="btn btn-default"
@@ -46,9 +50,7 @@
         </a>
 
         <!-- Delete -->
-        <input type="hidden" name="_method" value="delete"></input>
-        <button class="btn btn-danger"
-             type="submit">
+        <button type="submit" class="btn btn-danger">
              <i class="glyphicon glyphicon-trash"></i>
              Delete
          </button>
